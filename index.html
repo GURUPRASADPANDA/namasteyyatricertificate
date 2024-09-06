@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namastey Yatri Certificate Verification</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+    color: #555;
+}
+
+
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#result {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 600px) {
+    .container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Namastey Yatri Internship Certificate Verification</h1>
+        <form id="verificationForm">
+            <label for="internName">Intern ID:</label>
+            <input type="text" id="internName" name="internName" required>
+            
+            <label for="internshipDuration">Duration of Internship:</label>
+            <input type="text" id="internshipDuration" name="internshipDuration" required value="June - August">
+            
+            <label for="internRole">Role During Internship:</label>
+            <select id="internRole" name="internRole" required style="height:40px">
+                <option value="">Select Role</option>
+                <option value="Developer">Developer</option>
+                <option value="Designer">Designer</option>
+                <option value="Project Manager">Management</option>
+                <option value="Tester">Research</option>
+                <option value="Content Creator">Content Creator</option>
+            </select>
+            
+            <button type="submit">Verify</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('verificationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const internName = document.getElementById('internName').value.toLowerCase().replace(/\s/g, '_');
+        const internshipDuration = document.getElementById('internshipDuration').value;
+        const internRole = document.getElementById('internRole').value;
+        
+        const internsData = {
+            "2341": {
+                name: "Creta",
+                duration: "June - August",
+                role: "Designer"
+            },
+            "himangi_tripathy": {
+                name: "Himangi Tripathy",
+                duration: "June - August",
+                role: "Designer"
+            },
+            // Add more interns here
+        };
+    
+        // Verification logic
+        const intern = internsData[internName];
+        const isValid = intern && 
+                        intern.duration === internshipDuration && 
+                        intern.role === internRole;
+    
+        if (isValid) {
+            document.getElementById('result').innerHTML = `
+                <h2>Certificate Verified</h2>
+                <p><strong>Name:</strong> ${intern.name}</p>
+                <p><strong>Duration:</strong> ${intern.duration}</p>
+                <p><strong>Role:</strong> ${intern.role}</p>
+            `;
+        } else {
+            document.getElementById('result').innerHTML = `<p>Certificate not found. Please check the details.</p>`;
+        }
+    });
+    </script>
+</body>
+</html>
