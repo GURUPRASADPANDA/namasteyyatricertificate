@@ -123,23 +123,35 @@ button:hover {
                 duration: "June - August",
                 role: "Designer"
             },
-            // Add more interns here
+            
         };
     
-        // Verification logic
+       
         const intern = internsData[internName];
         const isValid = intern && 
                         intern.duration === internshipDuration && 
                         intern.role === internRole;
-    
+                        let certificate ;
         if (isValid) {
-            document.getElementById('result').innerHTML = `
-                <h2>Certificate Verified</h2>
-                <p><strong>Name:</strong> ${intern.name}</p>
-                <p><strong>Duration:</strong> ${intern.duration}</p>
-                <p><strong>Role:</strong> ${intern.role}</p>
-                <a href="creta.html">see certificate</a>
-            `; 
+
+                            if(internName == 2401){
+                                document.getElementById('result').innerHTML = `
+                                <h2>Certificate Verified</h2>
+                                <p><strong>Name:</strong> ${intern.name}</p>
+                                <p><strong>Duration:</strong> ${intern.duration}</p>
+                                <p><strong>Role:</strong> ${intern.role}</p>
+                                <a href="certificates/creta.html">see certificate</a>
+                                `;
+
+                            }else if(internName == 2402){
+                                document.getElementById('result').innerHTML = `
+                                <h2>Certificate Verified</h2>
+                                <p><strong>Name:</strong> ${intern.name}</p>
+                                <p><strong>Duration:</strong> ${intern.duration}</p>
+                                <p><strong>Role:</strong> ${intern.role}</p>
+                                <a href="certificates/himangi.html">see certificate</a>
+                                `;
+                            }
         } else {
             document.getElementById('result').innerHTML = `<p>Certificate not found. Please check the details.</p>`;
         }
